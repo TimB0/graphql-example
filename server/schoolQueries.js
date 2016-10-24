@@ -5,6 +5,7 @@ const {
   GraphQLString,
 } = require('graphql');
 
+// Own types
 const {
   ClassType,
   StudentType
@@ -17,14 +18,11 @@ const {
   getStudents
 } = require('./schoolServices.js');
 
-/**
- * Top-level element: QUERIES
- */
 module.exports = new GraphQLObjectType({
   name: 'Query',
   description: 'Queries regarding classes',
 
-  // A list of root elements from our schema
+  // List of our top-level queries elements
   fields: () => ({
     class: {
       type: ClassType,
