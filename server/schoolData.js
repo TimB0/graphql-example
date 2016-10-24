@@ -1,5 +1,3 @@
-'use strict';
-
 // --- DATA ---
 
 const classes = [{
@@ -23,27 +21,18 @@ let students = [{
 // --- READ FUNCTIONS ---
 
 module.exports.getClass = function (classId) {
-  console.log('getClass');
   return classes.find(c => c.id === classId);
 };
 
-module.exports.getClassId = function (classId) {
-  console.log('getClassId');
-  return classId;
-};
-
 module.exports.getStudent = function (studentId) {
-  console.log('getStudent');
   return students.find(s => s.id === studentId);
 };
 
 module.exports.getStudents = function () {
-  console.log('getStudents');
   return students;
 };
 
 module.exports.getStudentsForClass = function () {
-  console.log('getStudentsForClass');
   return students;
 };
 
