@@ -1,5 +1,5 @@
+// GraphQL types
 const {
-  graphql,
   GraphQLObjectType,
   GraphQLList,
   GraphQLNonNull,
@@ -7,6 +7,7 @@ const {
   GraphQLString,
 } = require('graphql');
 
+// Functions to access data
 const {
   getClass,
   getStudent,
@@ -15,6 +16,16 @@ const {
   removeStudent
 } = require('./schoolData.js');
 
+// Following schema describes this simple graph of objects:
+//
+//   |-------| 1      n |---------|
+//   | Class | -------- | Student |
+//   |-------|          |---------|
+//
+
+/**
+ * Define our own classType
+ */
 const classType = new GraphQLObjectType({
   name: 'Class',
   description: 'A class in the school',
@@ -31,6 +42,9 @@ const classType = new GraphQLObjectType({
   })
 });
 
+/**
+ * Define our own studentType
+ */
 const studentType = new GraphQLObjectType({
   name: 'Student',
   description: 'A student',
@@ -55,9 +69,14 @@ const studentType = new GraphQLObjectType({
   })
 });
 
+/**
+ * Top-level element: QUERIES
+ */
 const queryType = new GraphQLObjectType({
   name: 'Query',
   description: 'Queries regarding classes',
+
+  // A list of root elements from our schema
   fields: () => ({
     class: {
       type: classType,
@@ -89,6 +108,9 @@ const queryType = new GraphQLObjectType({
   })
 });
 
+/**
+ * Top-level element: MUTATIONS
+ */
 const mutationType = new GraphQLObjectType({
   name: 'School_Mutations',
   description: 'These are the things we can change about our school',
@@ -108,6 +130,7 @@ const mutationType = new GraphQLObjectType({
   })
 });
 
+// Export GraphQL schema
 module.exports = new GraphQLSchema({
   query: queryType,
   mutation: mutationType
