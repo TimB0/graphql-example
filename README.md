@@ -32,7 +32,7 @@ This will start an Express server on port 4000, and expose two endpoints:
 ### Starting the client
 
 ```sh
-cd server
+cd client
 npm install
 npm start
 ```
