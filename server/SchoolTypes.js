@@ -10,7 +10,7 @@ const {
 const {
   getClass,
   getStudentsForClass
-} = require('./schoolData.js');
+} = require('./schoolServices.js');
 
 /**
  * Define our own classType
